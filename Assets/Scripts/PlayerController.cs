@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 	public float gravity;
 	public float speed;
 	public float jumpForce;
+	public string character;
 	public Vector2 moveInput;
 	private bool onGround;
 	private bool crouched;
@@ -66,6 +67,12 @@ public class PlayerController : MonoBehaviour
 				moveInput = controls.Player.Move2.ReadValue<Vector2>();
 			}
 			transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * speed);
+			if (transform.position.x < -8f){
+				transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
+			}
+			else if (transform.position.x > 8f){
+				transform.position = new Vector3(8f, transform.position.y, transform.position.z);
+			}
 		}
     }
 	
@@ -73,6 +80,8 @@ public class PlayerController : MonoBehaviour
 		controls.Player.Enable();
 		controls.Player.Jump1.performed += OnJump1Triggered;
 		controls.Player.Jump2.performed += OnJump2Triggered;
+		controls.Player.Attack1.performed += OnAttack1Triggered;
+		controls.Player.Attack2.performed += OnAttack2Triggered;
 	}
 	
 	private void OnCollisionEnter2D(Collision2D collision){
@@ -82,16 +91,34 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	private void OnJump1Triggered(InputAction.CallbackContext context){
-		if (gameObject.name == "Player 1" && onGround == true){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1" && onGround == true){
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 			onGround = false;
 		}
 	}
 	
 	private void OnJump2Triggered(InputAction.CallbackContext context){
-		if (gameObject.name == "Player 2" && onGround == true){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2" && onGround == true){
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 			onGround = false;
 		}
 	}
+	
+	private void OnAttack1Triggered(InputAction.CallbackContext context){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1"){
+			StartCoroutine(attack("Jab"));
+		}
+	}
+	
+	private void OnAttack2Triggered(InputAction.CallbackContext context){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2"){
+			StartCoroutine(attack("Jab"));
+		}
+	}
+	
+	IEnumerator attack(string type){
+        transform.Find(type).gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+		GameObject.Find(type).gameObject.SetActive(false);
+    }
 }

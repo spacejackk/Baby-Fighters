@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,19 +10,25 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce;
 	public string character;
 	public Vector2 moveInput;
+	public List<Sprite> sprites;
+	public HealthBar p1HP;
+	public HealthBar p2HP;
+	public GameManager gameManager;
 	private bool onGround;
 	private bool crouched;
+	private bool hit;
 	private Rigidbody2D playerRb;
-	private GameManager gameManager;
+	private SpriteRenderer sprite;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+		sprite = GetComponent<SpriteRenderer>();
 		Physics.gravity *= gravity;
 		onGround = true;
 		crouched = false;
-		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		hit = false;
     }
 	
 	void Awake(){
@@ -38,14 +45,14 @@ public class PlayerController : MonoBehaviour
 						crouched = true;
 						transform.position -= new Vector3(0f, 0.75f, 0f);
 					}
-					transform.localScale = new Vector3(1f, 1.5f, 1f);
+					transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
 						transform.position += new Vector3(0f, 0.75f, 0f);
 					}
-					transform.localScale = new Vector3(1f, 3f, 1f);
+					transform.localScale = new Vector3(0.5f, 0.5f, 1f);
 				}
 				moveInput = controls.Player.Move1.ReadValue<Vector2>();
 			}
@@ -55,14 +62,14 @@ public class PlayerController : MonoBehaviour
 						crouched = true;
 						transform.position -= new Vector3(0f, 0.75f, 0f);
 					}
-					transform.localScale = new Vector3(1f, 1.5f, 1f);
+					transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
 						transform.position += new Vector3(0f, 0.75f, 0f);
 					}
-					transform.localScale = new Vector3(1f, 3f, 1f);
+					transform.localScale = new Vector3(0.5f, 0.5f, 1f);
 				}
 				moveInput = controls.Player.Move2.ReadValue<Vector2>();
 			}
@@ -80,13 +87,26 @@ public class PlayerController : MonoBehaviour
 		controls.Player.Enable();
 		controls.Player.Jump1.performed += OnJump1Triggered;
 		controls.Player.Jump2.performed += OnJump2Triggered;
-		controls.Player.Attack1.performed += OnAttack1Triggered;
-		controls.Player.Attack2.performed += OnAttack2Triggered;
+		controls.Player.Jab1.performed += OnJab1Triggered;
+		controls.Player.Jab2.performed += OnJab2Triggered;
+		controls.Player.Kick1.performed += OnKick1Triggered;
+		controls.Player.Kick2.performed += OnKick2Triggered;
 	}
 	
 	private void OnCollisionEnter2D(Collision2D collision){
 		if (collision.gameObject.CompareTag("Ground")){
 			onGround = true;
+		}
+	}
+	
+	private void OnTriggerEnter2D(Collider2D collider){
+		if ((collider.CompareTag("Jab2") || collider.CompareTag("Kick2")) && gameObject.name == "Player 1"){
+			p1HP.hp -= 5;
+			StartCoroutine(counterWin());
+		}
+		else if ((collider.CompareTag("Jab1") || collider.CompareTag("Kick1")) && gameObject.name == "Player 2"){
+			p2HP.hp -= 5;
+			StartCoroutine(counterWin());
 		}
 	}
 	
@@ -104,21 +124,53 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	
-	private void OnAttack1Triggered(InputAction.CallbackContext context){
+	private void OnJab1Triggered(InputAction.CallbackContext context){
 		if (gameManager.gameActive == true && gameObject.name == "Player 1"){
-			StartCoroutine(attack("Jab"));
+			StartCoroutine(attack("Jab1"));
 		}
 	}
 	
-	private void OnAttack2Triggered(InputAction.CallbackContext context){
+	private void OnJab2Triggered(InputAction.CallbackContext context){
 		if (gameManager.gameActive == true && gameObject.name == "Player 2"){
-			StartCoroutine(attack("Jab"));
+			StartCoroutine(attack("Jab2"));
+		}
+	}
+	
+	private void OnKick1Triggered(InputAction.CallbackContext context){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1"){
+			StartCoroutine(attack("Kick1"));
+		}
+	}
+	
+	private void OnKick2Triggered(InputAction.CallbackContext context){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2"){
+			StartCoroutine(attack("Kick2"));
+		}
+	}
+	
+	private void OnCounter1Triggered(InputAction.CallbackContext context){
+		if (hit == true && gameManager.gameActive == true && gameObject.name == "Player 1"){
+			StartCoroutine(attack("Counter1"));
+		}
+	}
+	
+	private void OnCounter2Triggered(InputAction.CallbackContext context){
+		if (hit == true && gameManager.gameActive == true && gameObject.name == "Player 2"){
+			StartCoroutine(attack("Counter2"));
 		}
 	}
 	
 	IEnumerator attack(string type){
         transform.Find(type).gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-		GameObject.Find(type).gameObject.SetActive(false);
+		sprite.sprite = sprites.Find(item => item.name == type.Remove(type.Length - 1) + "_0");
+        yield return new WaitForSeconds(0.3f);
+		transform.Find(type).gameObject.SetActive(false);
+		sprite.sprite = sprites.Find(item => item.name == "Char1_0");
+    }
+	
+	IEnumerator counterWin(){
+        hit = true;
+        yield return new WaitForSeconds(0.3f);
+		hit = false;
     }
 }

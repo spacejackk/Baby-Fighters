@@ -7,13 +7,14 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
 	public bool gameActive;
+	public List<GameObject> characters;
 	public GameObject titleScreen;
 	public GameObject start;
+	public GameObject gameUI;
 	public PlayerController p1;
 	public PlayerController p2;
 	public DragSelect p1Select;
 	public DragSelect p2Select;
-	public List<GameObject> characters;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
 			gameActive = true;
 			titleScreen.gameObject.SetActive(false);
 			start.gameObject.SetActive(false);
+			gameUI.gameObject.SetActive(true);
 			p1.character = p1Select.selected.name;
 			p2.character = p2Select.selected.name;
 		}

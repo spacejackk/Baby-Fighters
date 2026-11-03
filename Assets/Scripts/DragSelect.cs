@@ -10,14 +10,14 @@ public class DragSelect : MonoBehaviour, IDragHandler
 	public float speed;
 	public Vector2 moveInput;
 	public GameObject selected;
+	public GameManager gameManager;
 	private RectTransform rectTransform;
-	private GameManager gameManager;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-		gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+		selected = null;
     }
 	
 	void Awake(){

@@ -147,7 +147,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack1"",
+                    ""name"": ""Jab1"",
                     ""type"": ""Button"",
                     ""id"": ""6c2ab1b8-8984-453a-af3d-a3c78ae1679a"",
                     ""expectedControlType"": """",
@@ -156,9 +156,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack2"",
+                    ""name"": ""Jab2"",
                     ""type"": ""Button"",
                     ""id"": ""f78f9852-9e57-485f-8585-c5c728443369"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Kick1"",
+                    ""type"": ""Button"",
+                    ""id"": ""069e0035-ad79-4ce7-b7e5-bb770ec9934d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Kick2"",
+                    ""type"": ""Button"",
+                    ""id"": ""08408f55-f10b-4175-ace3-b6a03616cc04"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -361,7 +379,29 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Attack1"",
+                    ""action"": ""Jab1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2054f81a-7ed8-4f9c-bbb6-16ab0d10530f"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Kick1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96cfe9c4-64a7-439d-b0b0-43ba87733ef7"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Kick2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -372,7 +412,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Attack2"",
+                    ""action"": ""Jab2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1120,8 +1160,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Jump2 = m_Player.FindAction("Jump2", throwIfNotFound: true);
         m_Player_Crouch1 = m_Player.FindAction("Crouch1", throwIfNotFound: true);
         m_Player_Crouch2 = m_Player.FindAction("Crouch2", throwIfNotFound: true);
-        m_Player_Attack1 = m_Player.FindAction("Attack1", throwIfNotFound: true);
-        m_Player_Attack2 = m_Player.FindAction("Attack2", throwIfNotFound: true);
+        m_Player_Jab1 = m_Player.FindAction("Jab1", throwIfNotFound: true);
+        m_Player_Jab2 = m_Player.FindAction("Jab2", throwIfNotFound: true);
+        m_Player_Kick1 = m_Player.FindAction("Kick1", throwIfNotFound: true);
+        m_Player_Kick2 = m_Player.FindAction("Kick2", throwIfNotFound: true);
         m_Player_Enter = m_Player.FindAction("Enter", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
@@ -1226,8 +1268,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump2;
     private readonly InputAction m_Player_Crouch1;
     private readonly InputAction m_Player_Crouch2;
-    private readonly InputAction m_Player_Attack1;
-    private readonly InputAction m_Player_Attack2;
+    private readonly InputAction m_Player_Jab1;
+    private readonly InputAction m_Player_Jab2;
+    private readonly InputAction m_Player_Kick1;
+    private readonly InputAction m_Player_Kick2;
     private readonly InputAction m_Player_Enter;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Previous;
@@ -1269,13 +1313,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Crouch2 => m_Wrapper.m_Player_Crouch2;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Attack1".
+        /// Provides access to the underlying input action "Player/Jab1".
         /// </summary>
-        public InputAction @Attack1 => m_Wrapper.m_Player_Attack1;
+        public InputAction @Jab1 => m_Wrapper.m_Player_Jab1;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Attack2".
+        /// Provides access to the underlying input action "Player/Jab2".
         /// </summary>
-        public InputAction @Attack2 => m_Wrapper.m_Player_Attack2;
+        public InputAction @Jab2 => m_Wrapper.m_Player_Jab2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Kick1".
+        /// </summary>
+        public InputAction @Kick1 => m_Wrapper.m_Player_Kick1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Kick2".
+        /// </summary>
+        public InputAction @Kick2 => m_Wrapper.m_Player_Kick2;
         /// <summary>
         /// Provides access to the underlying input action "Player/Enter".
         /// </summary>
@@ -1340,12 +1392,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Crouch2.started += instance.OnCrouch2;
             @Crouch2.performed += instance.OnCrouch2;
             @Crouch2.canceled += instance.OnCrouch2;
-            @Attack1.started += instance.OnAttack1;
-            @Attack1.performed += instance.OnAttack1;
-            @Attack1.canceled += instance.OnAttack1;
-            @Attack2.started += instance.OnAttack2;
-            @Attack2.performed += instance.OnAttack2;
-            @Attack2.canceled += instance.OnAttack2;
+            @Jab1.started += instance.OnJab1;
+            @Jab1.performed += instance.OnJab1;
+            @Jab1.canceled += instance.OnJab1;
+            @Jab2.started += instance.OnJab2;
+            @Jab2.performed += instance.OnJab2;
+            @Jab2.canceled += instance.OnJab2;
+            @Kick1.started += instance.OnKick1;
+            @Kick1.performed += instance.OnKick1;
+            @Kick1.canceled += instance.OnKick1;
+            @Kick2.started += instance.OnKick2;
+            @Kick2.performed += instance.OnKick2;
+            @Kick2.canceled += instance.OnKick2;
             @Enter.started += instance.OnEnter;
             @Enter.performed += instance.OnEnter;
             @Enter.canceled += instance.OnEnter;
@@ -1390,12 +1448,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Crouch2.started -= instance.OnCrouch2;
             @Crouch2.performed -= instance.OnCrouch2;
             @Crouch2.canceled -= instance.OnCrouch2;
-            @Attack1.started -= instance.OnAttack1;
-            @Attack1.performed -= instance.OnAttack1;
-            @Attack1.canceled -= instance.OnAttack1;
-            @Attack2.started -= instance.OnAttack2;
-            @Attack2.performed -= instance.OnAttack2;
-            @Attack2.canceled -= instance.OnAttack2;
+            @Jab1.started -= instance.OnJab1;
+            @Jab1.performed -= instance.OnJab1;
+            @Jab1.canceled -= instance.OnJab1;
+            @Jab2.started -= instance.OnJab2;
+            @Jab2.performed -= instance.OnJab2;
+            @Jab2.canceled -= instance.OnJab2;
+            @Kick1.started -= instance.OnKick1;
+            @Kick1.performed -= instance.OnKick1;
+            @Kick1.canceled -= instance.OnKick1;
+            @Kick2.started -= instance.OnKick2;
+            @Kick2.performed -= instance.OnKick2;
+            @Kick2.canceled -= instance.OnKick2;
             @Enter.started -= instance.OnEnter;
             @Enter.performed -= instance.OnEnter;
             @Enter.canceled -= instance.OnEnter;
@@ -1754,19 +1818,33 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCrouch2(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Attack1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Jab1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAttack1(InputAction.CallbackContext context);
+        void OnJab1(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Attack2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Jab2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAttack2(InputAction.CallbackContext context);
+        void OnJab2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Kick1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKick1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Kick2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnKick2(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Enter" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

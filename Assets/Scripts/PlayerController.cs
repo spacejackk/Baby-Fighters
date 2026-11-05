@@ -9,26 +9,37 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	public float jumpForce;
 	public string character;
+	public bool blocking;
 	public Vector2 moveInput;
-	public List<Sprite> sprites;
 	public HealthBar p1HP;
 	public HealthBar p2HP;
+	public SpriteManager sprite;
 	public GameManager gameManager;
 	private bool onGround;
 	private bool crouched;
-	private bool hit;
+	private float prevTime;
+	private List<string> inputHistory = new List<string>();
+	private List<string> jabCombo;
+	private List<string> specialCombo;
 	private Rigidbody2D playerRb;
-	private SpriteRenderer sprite;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-		sprite = GetComponent<SpriteRenderer>();
 		Physics.gravity *= gravity;
 		onGround = true;
 		crouched = false;
-		hit = false;
+		blocking = false;
+		if (gameObject.name == "Player 1"){
+			jabCombo = new List<string>{"Jab1", "Jab1", "Jab1"};
+			specialCombo = new List<string>{"Jab1", "Kick1", "Kick1", "Jab1"};
+		}
+		if (gameObject.name == "Player 2"){
+			sprite.flipSprite(-1);
+			jabCombo = new List<string>{"Jab2", "Jab2", "Jab2"};
+			specialCombo = new List<string>{"Jab2", "Kick2", "Kick2", "Jab2"};
+		}
     }
 	
 	void Awake(){
@@ -44,15 +55,25 @@ public class PlayerController : MonoBehaviour
 					if (crouched == false){
 						crouched = true;
 						transform.position -= new Vector3(0f, 0.75f, 0f);
+						transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 					}
-					transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
 						transform.position += new Vector3(0f, 0.75f, 0f);
+						transform.localScale = new Vector3(0.5f, 0.5f, 1f);
 					}
-					transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+				}
+				if (controls.Player.Block1.IsPressed()){
+					if (blocking == false){
+						blocking = true;
+					}
+				}
+				else{
+					if (blocking == true){
+						blocking = false;
+					}
 				}
 				moveInput = controls.Player.Move1.ReadValue<Vector2>();
 			}
@@ -61,30 +82,42 @@ public class PlayerController : MonoBehaviour
 					if (crouched == false){
 						crouched = true;
 						transform.position -= new Vector3(0f, 0.75f, 0f);
+						transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 					}
-					transform.localScale = new Vector3(0.5f, 0.25f, 1f);
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
 						transform.position += new Vector3(0f, 0.75f, 0f);
+						transform.localScale = new Vector3(0.5f, 0.5f, 1f);
 					}
-					transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+				}
+				if (controls.Player.Block2.IsPressed()){
+					if (blocking == false){
+						blocking = true;
+					}
+				}
+				else{
+					if (blocking == true){
+						blocking = false;
+					}
 				}
 				moveInput = controls.Player.Move2.ReadValue<Vector2>();
 			}
+			sprite.flipSprite(moveInput.x);
 			transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * speed);
-			if (transform.position.x < -8f){
-				transform.position = new Vector3(-8f, transform.position.y, transform.position.z);
+			if (transform.position.x < -9f){
+				transform.position = new Vector3(-9f, transform.position.y, transform.position.z);
 			}
-			else if (transform.position.x > 8f){
-				transform.position = new Vector3(8f, transform.position.y, transform.position.z);
+			else if (transform.position.x > 9f){
+				transform.position = new Vector3(9f, transform.position.y, transform.position.z);
 			}
 		}
     }
 	
 	public void OnEnable(){
 		controls.Player.Enable();
+		InputSystem.actions.FindActionMap("Player").actionTriggered += OnActionTriggered;
 		controls.Player.Jump1.performed += OnJump1Triggered;
 		controls.Player.Jump2.performed += OnJump2Triggered;
 		controls.Player.Jab1.performed += OnJab1Triggered;
@@ -101,12 +134,66 @@ public class PlayerController : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D collider){
 		if ((collider.CompareTag("Jab2") || collider.CompareTag("Kick2")) && gameObject.name == "Player 1"){
-			p1HP.hp -= 5;
-			StartCoroutine(counterWin());
+			if (blocking == false){
+				StartCoroutine(counterWin(collider));
+			}
 		}
 		else if ((collider.CompareTag("Jab1") || collider.CompareTag("Kick1")) && gameObject.name == "Player 2"){
-			p2HP.hp -= 5;
-			StartCoroutine(counterWin());
+			if (blocking == false){
+				StartCoroutine(counterWin(collider));
+			}
+		}
+	}
+	
+	private void OnActionTriggered(InputAction.CallbackContext context){
+		if (!(jabCombo.Contains(context.action.name) || specialCombo.Contains(context.action.name))){
+			return;
+		}
+		if (Time.time - prevTime > 0.5f){
+            inputHistory.Clear();
+        }
+		inputHistory.Add(context.action.name);
+        prevTime = Time.time;
+		bool jabGo = false;
+		bool specialGo = false;
+		if (inputHistory.Count == jabCombo.Count){
+			for (int i = 0; i < jabCombo.Count; i++){
+				if (inputHistory[i] == jabCombo[i]){
+					jabGo = true;
+				}
+				else{
+					jabGo = false;
+				}
+			}
+		}
+		else if (inputHistory.Count == specialCombo.Count){
+			for (int i = 0; i < specialCombo.Count; i++){
+				if (inputHistory[i] != specialCombo[i]){
+					specialGo = true;
+				}
+				else{
+					specialGo = false;
+				}
+			}
+		}
+		else if (inputHistory.Count > specialCombo.Count){
+			inputHistory.Clear();
+		}
+		if (jabGo == true){
+			if (gameObject.name == "Player 1"){
+				StartCoroutine(attack("Punch1"));
+			}
+			else if (gameObject.name == "Player 2"){
+				StartCoroutine(attack("Punch2"));
+			}
+		}
+		else if (specialGo == true){
+			if (gameObject.name == "Player 1"){
+				StartCoroutine(attack("Special1"));
+			}
+			else if (gameObject.name == "Player 2"){
+				StartCoroutine(attack("Special2"));
+			}
 		}
 	}
 	
@@ -148,29 +235,51 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	
-	private void OnCounter1Triggered(InputAction.CallbackContext context){
-		if (hit == true && gameManager.gameActive == true && gameObject.name == "Player 1"){
-			StartCoroutine(attack("Counter1"));
-		}
-	}
-	
-	private void OnCounter2Triggered(InputAction.CallbackContext context){
-		if (hit == true && gameManager.gameActive == true && gameObject.name == "Player 2"){
-			StartCoroutine(attack("Counter2"));
-		}
-	}
-	
 	IEnumerator attack(string type){
         transform.Find(type).gameObject.SetActive(true);
-		sprite.sprite = sprites.Find(item => item.name == type.Remove(type.Length - 1) + "_0");
+		sprite.updateSprite(type);
         yield return new WaitForSeconds(0.3f);
 		transform.Find(type).gameObject.SetActive(false);
-		sprite.sprite = sprites.Find(item => item.name == "Char1_0");
+		sprite.updateSprite("Char1.");
     }
 	
-	IEnumerator counterWin(){
-        hit = true;
-        yield return new WaitForSeconds(0.3f);
-		hit = false;
+	IEnumerator counterWin(Collider2D collider){
+		float timer = 0f;
+		while (blocking == false && timer < 0.1f){
+			timer += Time.deltaTime;
+			yield return null;
+		}
+		if (blocking == true && gameObject.name == "Player 1"){
+			p2HP.hp -= 5;
+		}
+		if (blocking == true && gameObject.name == "Player 2"){
+			p1HP.hp -= 5;
+		}
+		while (blocking == false && timer < 0.2f){
+			timer += Time.deltaTime;
+			yield return null;
+		}
+		if (blocking == false && gameObject.name == "Player 1"){
+			if (collider.CompareTag("Punch2")){
+				p1HP.hp -= 10;
+			}
+			else if (collider.CompareTag("Special2")){
+				p1HP.hp -= 15;
+			}
+			else{
+				p1HP.hp -= 5;
+			}
+		}
+		if (blocking == false && gameObject.name == "Player 2"){
+			if (collider.CompareTag("Punch1")){
+				p2HP.hp -= 10;
+			}
+			else if (collider.CompareTag("Special1")){
+				p2HP.hp -= 15;
+			}
+			else{
+				p2HP.hp -= 5;
+			}
+		}
     }
 }

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       Application.targetFrameRate = 60;
+	   Cursor.visible = false;
 	   gameActive = false;
     }
 	
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 	public void OnEnable(){
 		controls.Player.Enable();
 		controls.Player.Enter.performed += OnEnterTriggered;
+		controls.Player.Quit.performed += OnQuitTriggered;
 	}
 	
 	private void OnEnterTriggered(InputAction.CallbackContext context){
@@ -53,5 +54,9 @@ public class GameManager : MonoBehaviour
 			p1.character = p1Select.selected.name;
 			p2.character = p2Select.selected.name;
 		}
+	}
+	
+	private void OnQuitTriggered(InputAction.CallbackContext context){
+		Application.Quit();
 	}
 }

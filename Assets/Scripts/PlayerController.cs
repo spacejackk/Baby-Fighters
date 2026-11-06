@@ -22,11 +22,13 @@ public class PlayerController : MonoBehaviour
 	private List<string> jabCombo;
 	private List<string> specialCombo;
 	private Rigidbody2D playerRb;
+	private BoxCollider2D hitbox;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+		hitbox = GetComponent<BoxCollider2D>();
 		Physics.gravity *= gravity;
 		onGround = true;
 		crouched = false;
@@ -54,15 +56,17 @@ public class PlayerController : MonoBehaviour
 				if (controls.Player.Crouch1.IsPressed()){
 					if (crouched == false){
 						crouched = true;
-						transform.position -= new Vector3(0f, 0.75f, 0f);
-						transform.localScale = new Vector3(0.5f, 0.25f, 1f);
+						sprite.updateSprite("Crouch1");
+						hitbox.size = new Vector2(2.0f, 5.0f);
+						hitbox.offset = new Vector2(0f, -1.0f);
 					}
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
-						transform.position += new Vector3(0f, 0.75f, 0f);
-						transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+						sprite.updateSprite("Character1.");
+						hitbox.size = new Vector2(2.0f, 7.0f);
+						hitbox.offset = new Vector2(0f, 0f);
 					}
 				}
 				if (controls.Player.Block1.IsPressed()){
@@ -81,15 +85,17 @@ public class PlayerController : MonoBehaviour
 				if (controls.Player.Crouch2.IsPressed()){
 					if (crouched == false){
 						crouched = true;
-						transform.position -= new Vector3(0f, 0.75f, 0f);
-						transform.localScale = new Vector3(0.5f, 0.25f, 1f);
+						sprite.updateSprite("Crouch2");
+						hitbox.size = new Vector2(2.0f, 5.0f);
+						hitbox.offset = new Vector2(0f, -1.0f);
 					}
 				}
 				else{
 					if (crouched == true){
 						crouched = false;
-						transform.position += new Vector3(0f, 0.75f, 0f);
-						transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+						sprite.updateSprite("Character1.");
+						hitbox.size = new Vector2(2.0f, 7.0f);
+						hitbox.offset = new Vector2(0f, 0f);
 					}
 				}
 				if (controls.Player.Block2.IsPressed()){
@@ -133,12 +139,12 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	private void OnTriggerEnter2D(Collider2D collider){
-		if ((collider.CompareTag("Jab2") || collider.CompareTag("Kick2")) && gameObject.name == "Player 1"){
+		if ((collider.CompareTag("Jab2") || collider.CompareTag("Kick2") || collider.CompareTag("Punch2") || collider.CompareTag("Special2")) && gameObject.name == "Player 1"){
 			if (blocking == false){
 				StartCoroutine(counterWin(collider));
 			}
 		}
-		else if ((collider.CompareTag("Jab1") || collider.CompareTag("Kick1")) && gameObject.name == "Player 2"){
+		else if ((collider.CompareTag("Jab1") || collider.CompareTag("Kick1") || collider.CompareTag("Punch1") || collider.CompareTag("Special1")) && gameObject.name == "Player 2"){
 			if (blocking == false){
 				StartCoroutine(counterWin(collider));
 			}
@@ -213,13 +219,23 @@ public class PlayerController : MonoBehaviour
 	
 	private void OnJab1Triggered(InputAction.CallbackContext context){
 		if (gameManager.gameActive == true && gameObject.name == "Player 1"){
-			StartCoroutine(attack("Jab1"));
+			if (onGround == true){
+				StartCoroutine(attack("Jab1"));
+			}
+			else{
+				StartCoroutine(attack("JumpJab1"));
+			}
 		}
 	}
 	
 	private void OnJab2Triggered(InputAction.CallbackContext context){
 		if (gameManager.gameActive == true && gameObject.name == "Player 2"){
-			StartCoroutine(attack("Jab2"));
+			if (onGround == true){
+				StartCoroutine(attack("Jab2"));
+			}
+			else{
+				StartCoroutine(attack("JumpJab2"));
+			}
 		}
 	}
 	
@@ -240,7 +256,7 @@ public class PlayerController : MonoBehaviour
 		sprite.updateSprite(type);
         yield return new WaitForSeconds(0.3f);
 		transform.Find(type).gameObject.SetActive(false);
-		sprite.updateSprite("Char1.");
+		sprite.updateSprite("Character1.");
     }
 	
 	IEnumerator counterWin(Collider2D collider){

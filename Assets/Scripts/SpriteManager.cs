@@ -21,9 +21,12 @@ public class SpriteManager : MonoBehaviour
     }
 	
 	public void updateSprite(string type){
-		sprite.sprite = sprites.Find(item => item.name == type.Remove(type.Length - 1) + "_0");
-		if (type.Contains("Char")){
+		sprite.sprite = sprites.Find(item => item.name == type.Remove(type.Length - 1));
+		if (type.Contains("Character")){
 			transform.localPosition = Vector3.zero;
+		}
+		else if (type.Contains("Crouch")){
+			transform.localPosition = new Vector3(offset.x, -1.0f, offset.z);
 		}
 		else{
 			transform.localPosition = offset;
@@ -36,7 +39,7 @@ public class SpriteManager : MonoBehaviour
             sprite.flipX = false;
 			offset = new Vector3(0.8f, 0f, 0f);
 			foreach (GameObject hurtbox in hurtboxes){
-				hurtbox.transform.localPosition = new Vector3(1.5f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
+				hurtbox.transform.localPosition = new Vector3(1.0f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
 			}
         }
 		//left
@@ -44,7 +47,7 @@ public class SpriteManager : MonoBehaviour
             sprite.flipX = true;
 			offset = new Vector3(-0.8f, 0f, 0f);
 			foreach (GameObject hurtbox in hurtboxes){
-				hurtbox.transform.localPosition = new Vector3(-1.5f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
+				hurtbox.transform.localPosition = new Vector3(-1.0f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
 			}
         }
 	}

@@ -27,7 +27,7 @@ public class DragSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (gameManager.titleScreen.activeInHierarchy == true){
+		if (gameManager.charSelect.activeInHierarchy == true){
 			if (gameObject.name == "P1 Select"){
 				moveInput = controls.Player.Move1.ReadValue<Vector2>();
 			}

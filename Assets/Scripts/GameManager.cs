@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	public bool gameActive;
 	public List<GameObject> characters;
 	public GameObject titleScreen;
+	public GameObject charSelect;
 	public GameObject start;
 	public GameObject gameUI;
 	public PlayerController p1;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (titleScreen.activeInHierarchy == true){
+		if (charSelect.activeInHierarchy == true){
 			if (p1Select.selected != null && p2Select.selected != null){
 				start.gameObject.SetActive(true);
 			}
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
 	private void OnEnterTriggered(InputAction.CallbackContext context){
 		if (start.activeInHierarchy == true){
 			gameActive = true;
-			titleScreen.gameObject.SetActive(false);
+			charSelect.gameObject.SetActive(false);
 			start.gameObject.SetActive(false);
 			gameUI.gameObject.SetActive(true);
 			p1.character = p1Select.selected.name;

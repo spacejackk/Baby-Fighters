@@ -45,7 +45,7 @@ public class SpriteManager : MonoBehaviour
             sprite.flipX = false;
 			offset = new Vector3(0.8f, 0f, 0f);
 			foreach (GameObject hurtbox in hurtboxes){
-				hurtbox.transform.localPosition = new Vector3(1.0f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
+				hurtbox.transform.localPosition = new Vector3(1.8f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
 			}
         }
 		//left
@@ -53,7 +53,7 @@ public class SpriteManager : MonoBehaviour
             sprite.flipX = true;
 			offset = new Vector3(-0.8f, 0f, 0f);
 			foreach (GameObject hurtbox in hurtboxes){
-				hurtbox.transform.localPosition = new Vector3(-1.0f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
+				hurtbox.transform.localPosition = new Vector3(-1.8f, hurtbox.transform.localPosition.y, hurtbox.transform.localPosition.z);
 			}
         }
 	}

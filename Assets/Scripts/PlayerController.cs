@@ -305,6 +305,7 @@ public class PlayerController : MonoBehaviour
 		attacking = true;
         transform.Find(type).gameObject.SetActive(true);
 		sprite.updateSprite(type);
+		otherPlayer.playerRb.WakeUp();
         yield return new WaitForSeconds(0.3f);
 		transform.Find(type).gameObject.SetActive(false);
 		sprite.updateSprite("Character1");

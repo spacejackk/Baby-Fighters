@@ -230,7 +230,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 7}
+  m_Size: {x: 3, y: 7}
   m_EdgeRadius: 0
 --- !u!114 &84683587
 MonoBehaviour:
@@ -249,7 +249,9 @@ MonoBehaviour:
   jumpForce: 7
   character: 
   blocking: 0
+  hurt: 0
   moveInput: {x: 0, y: 0}
+  otherPlayer: {fileID: 2002103003}
   p1HP: {fileID: 1447979600}
   p2HP: {fileID: 941533600}
   sprite: {fileID: 1779059424}
@@ -823,6 +825,7 @@ MonoBehaviour:
   speed: 600
   moveInput: {x: 0, y: 0}
   selected: {fileID: 0}
+  sprite: {fileID: 1162278759}
   gameManager: {fileID: 1915739236}
 --- !u!1 &443708444
 GameObject:
@@ -1726,18 +1729,7 @@ MonoBehaviour:
   - {fileID: 443708444}
   - {fileID: 1713141517}
   - {fileID: 432620876}
-  sprites:
-  - {fileID: -6610475535561802687, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -6744405253372726627, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -9214215126023505858, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: 3064703945628032447, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -1198111895851960866, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -824310746856478677, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: 4558076651441360740, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -7317581953426544217, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -569323779, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -4499482859197446853, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -5934901950196271691, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  sprites: []
 --- !u!212 &1162278760
 SpriteRenderer:
   serializedVersion: 2
@@ -1888,6 +1880,7 @@ MonoBehaviour:
   speed: 600
   moveInput: {x: 0, y: 0}
   selected: {fileID: 0}
+  sprite: {fileID: 1779059424}
   gameManager: {fileID: 1915739236}
 --- !u!1 &1382391137
 GameObject:
@@ -2686,18 +2679,7 @@ MonoBehaviour:
   - {fileID: 1382391137}
   - {fileID: 753085290}
   - {fileID: 1948900655}
-  sprites:
-  - {fileID: -6610475535561802687, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -6744405253372726627, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -9214215126023505858, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: 3064703945628032447, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -1198111895851960866, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -824310746856478677, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: 4558076651441360740, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -7317581953426544217, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -569323779, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -4499482859197446853, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
-  - {fileID: -5934901950196271691, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  sprites: []
 --- !u!212 &1779059425
 SpriteRenderer:
   serializedVersion: 2
@@ -2889,6 +2871,21 @@ MonoBehaviour:
   p2: {fileID: 2002103003}
   p1Select: {fileID: 1330949567}
   p2Select: {fileID: 438377844}
+  char1:
+  - {fileID: -6610475535561802687, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -6744405253372726627, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: 3064703945628032447, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -9214215126023505858, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -1198111895851960866, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: 4558076651441360740, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -824310746856478677, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -7317581953426544217, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -569323779, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -4499482859197446853, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  - {fileID: -5934901950196271691, guid: 06d88b66b194dad449bdbfdb13ca80b9, type: 3}
+  char2: []
+  char3: []
+  char4: []
 --- !u!1 &1935114271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3153,7 +3150,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 7}
+  m_Size: {x: 3, y: 7}
   m_EdgeRadius: 0
 --- !u!114 &2002103003
 MonoBehaviour:
@@ -3172,7 +3169,9 @@ MonoBehaviour:
   jumpForce: 7
   character: 
   blocking: 0
+  hurt: 0
   moveInput: {x: 0, y: 0}
+  otherPlayer: {fileID: 84683587}
   p1HP: {fileID: 1447979600}
   p2HP: {fileID: 941533600}
   sprite: {fileID: 1162278759}
@@ -3189,7 +3188,7 @@ GameObject:
   - component: {fileID: 2051753870}
   - component: {fileID: 2051753869}
   m_Layer: 5
-  m_Name: Character 1
+  m_Name: Character1
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 	public PlayerController p2;
 	public DragSelect p1Select;
 	public DragSelect p2Select;
+	public List<Sprite> char1;
+	public List<Sprite> char2;
+	public List<Sprite> char3;
+	public List<Sprite> char4;
 	private InputSystem_Actions controls;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

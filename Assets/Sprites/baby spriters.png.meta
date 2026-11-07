@@ -155,7 +155,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character1
+      name: Character
       rect:
         serializedVersion: 2
         x: 84
@@ -411,7 +411,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Block: 3064703945628032447
-      Character1: -6610475535561802687
+      Character: -6610475535561802687
       Crouch: -9214215126023505858
       Down: -5934901950196271691
       Hurt: -4499482859197446853

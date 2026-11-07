@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce;
 	public string character;
 	public bool blocking;
+	public bool hurt;
 	public Vector2 moveInput;
+	public PlayerController otherPlayer;
 	public HealthBar p1HP;
 	public HealthBar p2HP;
 	public SpriteManager sprite;
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
 	private bool onGround;
 	private bool crouched;
 	private bool attacking;
+	private bool dead;
 	private bool jabGo;
 	private bool specialGo;
 	private float prevTime;
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
 		crouched = false;
 		blocking = false;
 		attacking = false;
+		hurt = false;
+		dead = false;
 		walkTime = 0f;
 		if (gameObject.name == "Player 1"){
 			jabCombo = new List<string>{"Jab1", "Jab1", "Jab1"};
@@ -57,7 +62,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (gameManager.gameActive == true){
+		if (gameManager.gameActive == true && hurt == false && dead == false){
 			if (gameObject.name == "Player 1"){
 				if (controls.Player.Crouch1.IsPressed() && blocking == false){
 					if (crouched == false){
@@ -70,7 +75,7 @@ public class PlayerController : MonoBehaviour
 				else{
 					if (crouched == true){
 						crouched = false;
-						sprite.updateSprite("Character1.");
+						sprite.updateSprite("Character1");
 						hitbox.size = new Vector2(2.0f, 7.0f);
 						hitbox.offset = new Vector2(0f, 0f);
 					}
@@ -83,7 +88,7 @@ public class PlayerController : MonoBehaviour
 				}
 				else{
 					if (blocking == true){
-						sprite.updateSprite("Character1.");
+						sprite.updateSprite("Character1");
 						blocking = false;
 					}
 				}
@@ -101,7 +106,7 @@ public class PlayerController : MonoBehaviour
 				else{
 					if (crouched == true){
 						crouched = false;
-						sprite.updateSprite("Character1.");
+						sprite.updateSprite("Character1");
 						hitbox.size = new Vector2(2.0f, 7.0f);
 						hitbox.offset = new Vector2(0f, 0f);
 					}
@@ -114,7 +119,7 @@ public class PlayerController : MonoBehaviour
 				}
 				else{
 					if (blocking == true){
-						sprite.updateSprite("Character1.");
+						sprite.updateSprite("Character1");
 						blocking = false;
 					}
 				}
@@ -127,7 +132,7 @@ public class PlayerController : MonoBehaviour
 				if (attacking == false){
 					if (moveInput.x != 0){
 						if (walkTime < 0.2f){
-							sprite.updateSprite("Character1.");
+							sprite.updateSprite("Character1");
 						}
 						else if (walkTime > 0.4f){
 							walkTime = 0f;
@@ -137,7 +142,7 @@ public class PlayerController : MonoBehaviour
 						}
 					}
 					else{
-						sprite.updateSprite("Character1.");
+						sprite.updateSprite("Character1");
 					}
 				}
 			}
@@ -169,19 +174,19 @@ public class PlayerController : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D collider){
 		if ((collider.CompareTag("Jab2") || collider.CompareTag("Kick2") || collider.CompareTag("Punch2") || collider.CompareTag("Special2")) && gameObject.name == "Player 1"){
-			if (blocking == false){
+			if (blocking == false && hurt == false && dead == false){
 				StartCoroutine(counterWin(collider));
 			}
 		}
 		else if ((collider.CompareTag("Jab1") || collider.CompareTag("Kick1") || collider.CompareTag("Punch1") || collider.CompareTag("Special1")) && gameObject.name == "Player 2"){
-			if (blocking == false){
+			if (blocking == false && hurt == false && dead == false){
 				StartCoroutine(counterWin(collider));
 			}
 		}
 	}
 	
 	private void OnActionTriggered(InputAction.CallbackContext context){
-		if (context.performed && (jabCombo.Contains(context.action.name) || specialCombo.Contains(context.action.name))){
+		if (context.performed && (jabCombo.Contains(context.action.name) || specialCombo.Contains(context.action.name)) && blocking == false && hurt == false && dead == false){
 			if (Time.time - prevTime > 0.5f){
 				inputHistory.Clear();
 			}
@@ -248,21 +253,21 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	private void OnJump1Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 1" && onGround == true && blocking == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1" && onGround == true && blocking == false && hurt == false && dead == false){
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 			onGround = false;
 		}
 	}
 	
 	private void OnJump2Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 2" && onGround == true && blocking == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2" && onGround == true && blocking == false && hurt == false && dead == false){
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
 			onGround = false;
 		}
 	}
 	
 	private void OnJab1Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 1" && blocking == false && jabGo == false && specialGo == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1" && blocking == false && jabGo == false && specialGo == false && hurt == false && dead == false){
 			if (onGround == true){
 				StartCoroutine(attack("Jab1"));
 			}
@@ -273,7 +278,7 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	private void OnJab2Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 2" && blocking == false && jabGo == false && specialGo == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2" && blocking == false && jabGo == false && specialGo == false && hurt == false && dead == false){
 			if (onGround == true){
 				StartCoroutine(attack("Jab2"));
 			}
@@ -284,13 +289,13 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	private void OnKick1Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 1" && blocking == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 1" && blocking == false && hurt == false && dead == false){
 			StartCoroutine(attack("Kick1"));
 		}
 	}
 	
 	private void OnKick2Triggered(InputAction.CallbackContext context){
-		if (gameManager.gameActive == true && gameObject.name == "Player 2" && blocking == false){
+		if (gameManager.gameActive == true && gameObject.name == "Player 2" && blocking == false && hurt == false && dead == false){
 			StartCoroutine(attack("Kick2"));
 		}
 	}
@@ -302,9 +307,22 @@ public class PlayerController : MonoBehaviour
 		sprite.updateSprite(type);
         yield return new WaitForSeconds(0.3f);
 		transform.Find(type).gameObject.SetActive(false);
-		sprite.updateSprite("Character1.");
+		sprite.updateSprite("Character1");
 		attacking = false;
     }
+	
+	IEnumerator hurtSprite(PlayerController player){
+		player.hurt = true;
+		player.sprite.updateSprite("Hurt.");
+		yield return new WaitForSeconds(0.3f);
+		if (player.dead == true){
+			player.sprite.updateSprite("Down.");
+		}
+		else{
+			player.sprite.updateSprite("Character1");
+			player.hurt = false;
+		}
+	}
 	
 	IEnumerator counterWin(Collider2D collider){
 		float timer = 0f;
@@ -312,41 +330,49 @@ public class PlayerController : MonoBehaviour
 			timer += Time.deltaTime;
 			yield return null;
 		}
-		if (blocking == true && gameObject.name == "Player 1"){
-			p2HP.hp -= 5;
+		if (blocking == true && otherPlayer.hurt == false && gameObject.name == "Player 1"){
+			p2HP.hp -= 5.0f;
+			StartCoroutine(hurtSprite(otherPlayer));
 		}
-		if (blocking == true && gameObject.name == "Player 2"){
-			p1HP.hp -= 5;
+		if (blocking == true && otherPlayer.hurt == false && gameObject.name == "Player 2"){
+			p1HP.hp -= 5.0f;
+			StartCoroutine(hurtSprite(otherPlayer));
 		}
 		while (blocking == false && timer < 0.2f){
 			timer += Time.deltaTime;
 			yield return null;
 		}
-		if (blocking == false && gameObject.name == "Player 1"){
+		if (blocking == false && hurt == false && gameObject.name == "Player 1"){
 			if (collider.CompareTag("Punch2")){
-				p1HP.hp -= 10;
+				p1HP.hp -= 10.0f;
 			}
 			else if (collider.CompareTag("Special2")){
-				p1HP.hp -= 15;
+				p1HP.hp -= 15.0f;
 			}
 			else{
-				p1HP.hp -= 5;
+				p1HP.hp -= 5.0f;
 			}
+			StartCoroutine(hurtSprite(gameObject.GetComponent<PlayerController>()));
 		}
-		if (blocking == false && gameObject.name == "Player 2"){
+		if (blocking == false && hurt == false && gameObject.name == "Player 2"){
 			if (collider.CompareTag("Punch1")){
-				p2HP.hp -= 10;
+				p2HP.hp -= 10.0f;
 			}
 			else if (collider.CompareTag("Special1")){
-				p2HP.hp -= 15;
+				p2HP.hp -= 15.0f;
 			}
 			else{
-				p2HP.hp -= 5;
+				p2HP.hp -= 5.0f;
 			}
+			StartCoroutine(hurtSprite(gameObject.GetComponent<PlayerController>()));
+		}
+		if (gameObject.name == "Player 1" && p1HP.hp <= 0){
+			dead = true;
+			sprite.updateSprite("Down1");
+		}
+		else if (gameObject.name == "Player 2" && p2HP.hp <= 0){
+			dead = true;
+			sprite.updateSprite("Down2");
 		}
     }
-	
-	IEnumerator wait(float sec){
-		yield return new WaitForSeconds(sec);
-	}
 }

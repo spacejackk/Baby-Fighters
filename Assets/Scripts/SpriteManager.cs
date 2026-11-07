@@ -28,6 +28,12 @@ public class SpriteManager : MonoBehaviour
 		else if (type.Contains("Crouch")){
 			transform.localPosition = new Vector3(offset.x, -1.0f, offset.z);
 		}
+		else if (type.Contains("Hurt")){
+			transform.localPosition = new Vector3(offset.x * -1.25f, offset.y, offset.z);
+		}
+		else if (type.Contains("Down")){
+			transform.localPosition = new Vector3(offset.x, -2.5f, offset.z);
+		}
 		else{
 			transform.localPosition = offset;
 		}

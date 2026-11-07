@@ -9,6 +9,7 @@ public class DragSelect : MonoBehaviour
 	public float speed;
 	public Vector2 moveInput;
 	public GameObject selected;
+	public SpriteManager sprite;
 	public GameManager gameManager;
 	private RectTransform rectTransform;
 	private InputSystem_Actions controls;
@@ -36,6 +37,20 @@ public class DragSelect : MonoBehaviour
 			transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * speed);
 			transform.Translate(Vector3.up * moveInput.y * Time.deltaTime * speed);
 			selected = checkOverlap();
+			if (selected != null){
+				if (selected.name == "Character1"){
+					sprite.sprites = gameManager.char1;
+				}
+				else if (selected.name == "Character2"){
+					sprite.sprites = gameManager.char2;
+				}
+				else if (selected.name == "Character3"){
+					sprite.sprites = gameManager.char3;
+				}
+				else if (selected.name == "Character4"){
+					sprite.sprites = gameManager.char4;
+				}
+			}
 		}
     }
 	

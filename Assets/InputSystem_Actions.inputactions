@@ -131,6 +131,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause1",
+                    "type": "Button",
+                    "id": "d9554cfb-5ecf-4dc1-adf6-b681bfa86554",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause2",
+                    "type": "Button",
+                    "id": "924b6b20-976a-437b-ae66-cebd7c410fdc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -417,6 +435,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Block2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6193c778-9dc9-4553-93eb-50f86dcbc60e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd920254-b1e7-4e41-9e6c-3fb62e9284e8",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

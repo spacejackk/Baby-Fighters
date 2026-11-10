@@ -217,6 +217,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause1"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9554cfb-5ecf-4dc1-adf6-b681bfa86554"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause2"",
+                    ""type"": ""Button"",
+                    ""id"": ""924b6b20-976a-437b-ae66-cebd7c410fdc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -503,6 +521,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Block2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6193c778-9dc9-4553-93eb-50f86dcbc60e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd920254-b1e7-4e41-9e6c-3fb62e9284e8"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1104,6 +1144,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Block2 = m_Player.FindAction("Block2", throwIfNotFound: true);
         m_Player_Enter = m_Player.FindAction("Enter", throwIfNotFound: true);
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
+        m_Player_Pause1 = m_Player.FindAction("Pause1", throwIfNotFound: true);
+        m_Player_Pause2 = m_Player.FindAction("Pause2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1211,6 +1253,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Block2;
     private readonly InputAction m_Player_Enter;
     private readonly InputAction m_Player_Quit;
+    private readonly InputAction m_Player_Pause1;
+    private readonly InputAction m_Player_Pause2;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1279,6 +1323,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
         /// <summary>
+        /// Provides access to the underlying input action "Player/Pause1".
+        /// </summary>
+        public InputAction @Pause1 => m_Wrapper.m_Player_Pause1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Pause2".
+        /// </summary>
+        public InputAction @Pause2 => m_Wrapper.m_Player_Pause2;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1346,6 +1398,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Quit.started += instance.OnQuit;
             @Quit.performed += instance.OnQuit;
             @Quit.canceled += instance.OnQuit;
+            @Pause1.started += instance.OnPause1;
+            @Pause1.performed += instance.OnPause1;
+            @Pause1.canceled += instance.OnPause1;
+            @Pause2.started += instance.OnPause2;
+            @Pause2.performed += instance.OnPause2;
+            @Pause2.canceled += instance.OnPause2;
         }
 
         /// <summary>
@@ -1399,6 +1457,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Quit.started -= instance.OnQuit;
             @Quit.performed -= instance.OnQuit;
             @Quit.canceled -= instance.OnQuit;
+            @Pause1.started -= instance.OnPause1;
+            @Pause1.performed -= instance.OnPause1;
+            @Pause1.canceled -= instance.OnPause1;
+            @Pause2.started -= instance.OnPause2;
+            @Pause2.performed -= instance.OnPause2;
+            @Pause2.canceled -= instance.OnPause2;
         }
 
         /// <summary>
@@ -1797,6 +1861,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnQuit(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause2(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

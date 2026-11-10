@@ -1,0 +1,628 @@
+fileFormatVersion: 2
+guid: dcaa2e8b7bb1b0f4d8b96b91b4dc1fe8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2512280466955347957
+    second: froggy baby_0
+  - first:
+      213: -2145724093398143885
+    second: froggy baby_1
+  - first:
+      213: 3368249477181923198
+    second: froggy baby_2
+  - first:
+      213: 3315526017000632686
+    second: froggy baby_3
+  - first:
+      213: -680807276096314524
+    second: froggy baby_4
+  - first:
+      213: -7745526652796915418
+    second: froggy baby_5
+  - first:
+      213: -4267529820861017547
+    second: froggy baby_6
+  - first:
+      213: 1288705560750471422
+    second: froggy baby_7
+  - first:
+      213: -523617818900642771
+    second: froggy baby_8
+  - first:
+      213: -8655041785338274474
+    second: froggy baby_9
+  - first:
+      213: -6371216042441177661
+    second: froggy baby_10
+  - first:
+      213: -5778002086950348477
+    second: froggy baby_11
+  - first:
+      213: -5393565695486422065
+    second: froggy baby_12
+  - first:
+      213: 625777219631490463
+    second: froggy baby_13
+  - first:
+      213: 6063101332894818941
+    second: froggy baby_14
+  - first:
+      213: -5144347067761118160
+    second: froggy baby_15
+  - first:
+      213: -5903259702042892716
+    second: froggy baby_16
+  - first:
+      213: -7772453121819255497
+    second: froggy baby_17
+  - first:
+      213: 5907630004918820952
+    second: froggy baby_18
+  - first:
+      213: 5411464939011395017
+    second: froggy baby_19
+  - first:
+      213: -6842643461188013614
+    second: froggy baby_20
+  - first:
+      213: -4096915056393894510
+    second: froggy baby_21
+  - first:
+      213: 9042959526739690597
+    second: froggy baby_22
+  - first:
+      213: -155506480502110300
+    second: froggy baby_23
+  - first:
+      213: -5927109682055155241
+    second: froggy baby_24
+  - first:
+      213: 2896931786718109254
+    second: froggy baby_25
+  - first:
+      213: 7595746992958042899
+    second: froggy baby_26
+  - first:
+      213: 5138831436179718003
+    second: froggy baby_27
+  - first:
+      213: 2872322760857731931
+    second: froggy baby_28
+  - first:
+      213: 524296593473040167
+    second: froggy baby_29
+  - first:
+      213: 4187171906542692638
+    second: froggy baby_30
+  - first:
+      213: -8656398146195411030
+    second: froggy baby_31
+  - first:
+      213: 3106261116133985446
+    second: froggy baby_32
+  - first:
+      213: -385004082271537845
+    second: froggy baby_33
+  - first:
+      213: 8355542525603903873
+    second: froggy baby_34
+  - first:
+      213: -3310153336379317736
+    second: froggy baby_35
+  - first:
+      213: 7333373762547774372
+    second: froggy baby_36
+  - first:
+      213: -1312888854262017361
+    second: froggy baby_37
+  - first:
+      213: 8088447197208487985
+    second: froggy baby_38
+  - first:
+      213: 4517355323513490308
+    second: froggy baby_39
+  - first:
+      213: -7278924786653017004
+    second: froggy baby_40
+  - first:
+      213: -6444814009036196140
+    second: froggy baby_41
+  - first:
+      213: -489058147384608378
+    second: froggy baby_42
+  - first:
+      213: -2689241912660202898
+    second: froggy baby_43
+  - first:
+      213: 8026194896904869301
+    second: froggy baby_44
+  - first:
+      213: 5432135160482668519
+    second: froggy baby_45
+  - first:
+      213: 3151310118418342039
+    second: froggy baby_46
+  - first:
+      213: -3529138177205070392
+    second: froggy baby_47
+  - first:
+      213: 8273244155086855689
+    second: froggy baby_48
+  - first:
+      213: 5791544886356423506
+    second: froggy baby_49
+  - first:
+      213: -2235697944863507910
+    second: froggy baby_50
+  - first:
+      213: 7339942851639395321
+    second: froggy baby_51
+  - first:
+      213: -4438498275568918854
+    second: froggy baby_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Character
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 560
+        width: 147
+        height: 357
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0859f6d936922dd0800000000000000
+      internalID: -2512280466955347957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Moving
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 564
+        width: 132
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ca10b3e4bd832e0800000000000000
+      internalID: -2145724093398143885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jab
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 528
+        width: 207
+        height: 371
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fd252cd0d6ebe20800000000000000
+      internalID: 3368249477181923198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kick
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 540
+        width: 218
+        height: 361
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6173e6985d130e20800000000000000
+      internalID: 3315526017000632686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Block
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 557
+        width: 147
+        height: 358
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46327c3b3694d86f0800000000000000
+      internalID: -680807276096314524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Special
+      rect:
+        serializedVersion: 2
+        x: 1541
+        y: 613
+        width: 258
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62138bdfb8c528490800000000000000
+      internalID: -7745526652796915418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 179
+        width: 157
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 532513ffc30b6c4c0800000000000000
+      internalID: -4267529820861017547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JumpJab
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 174
+        width: 135
+        height: 346
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef83a9031e662e110800000000000000
+      internalID: 1288705560750471422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Punch
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 148
+        width: 213
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24cc523e5cbbb8f0800000000000000
+      internalID: -523617818900642771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 172
+        width: 157
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65ddfb44a5d13e780800000000000000
+      internalID: -8655041785338274474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 157
+        width: 353
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c5060bf3c4e497a0800000000000000
+      internalID: -6371216042441177661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 100
+        width: 310
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349dbdf07b960dfa0800000000000000
+      internalID: -5778002086950348477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Win
+      rect:
+        serializedVersion: 2
+        x: 2122
+        y: 87
+        width: 310
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc39cc783943625b0800000000000000
+      internalID: -5393565695486422065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9bf91143bcd134a45b0ab9af6bb37a3e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Block: -680807276096314524
+      Character: -2512280466955347957
+      Crouch: -4267529820861017547
+      Down: -6371216042441177661
+      Hurt: -8655041785338274474
+      Jab: 3368249477181923198
+      JumpJab: 1288705560750471422
+      Kick: 3315526017000632686
+      Moving: -2145724093398143885
+      Punch: -523617818900642771
+      Select: -5778002086950348477
+      Special: -7745526652796915418
+      Win: -5393565695486422065
+      froggy baby_13: 625777219631490463
+      froggy baby_14: 6063101332894818941
+      froggy baby_15: -5144347067761118160
+      froggy baby_16: -5903259702042892716
+      froggy baby_17: -7772453121819255497
+      froggy baby_18: 5907630004918820952
+      froggy baby_19: 5411464939011395017
+      froggy baby_20: -6842643461188013614
+      froggy baby_21: -4096915056393894510
+      froggy baby_22: 9042959526739690597
+      froggy baby_23: -155506480502110300
+      froggy baby_24: -5927109682055155241
+      froggy baby_25: 2896931786718109254
+      froggy baby_26: 7595746992958042899
+      froggy baby_27: 5138831436179718003
+      froggy baby_28: 2872322760857731931
+      froggy baby_29: 524296593473040167
+      froggy baby_30: 4187171906542692638
+      froggy baby_31: -8656398146195411030
+      froggy baby_32: 3106261116133985446
+      froggy baby_33: -385004082271537845
+      froggy baby_34: 8355542525603903873
+      froggy baby_35: -3310153336379317736
+      froggy baby_36: 7333373762547774372
+      froggy baby_37: -1312888854262017361
+      froggy baby_38: 8088447197208487985
+      froggy baby_39: 4517355323513490308
+      froggy baby_40: -7278924786653017004
+      froggy baby_41: -6444814009036196140
+      froggy baby_42: -489058147384608378
+      froggy baby_43: -2689241912660202898
+      froggy baby_44: 8026194896904869301
+      froggy baby_45: 5432135160482668519
+      froggy baby_46: 3151310118418342039
+      froggy baby_47: -3529138177205070392
+      froggy baby_48: 8273244155086855689
+      froggy baby_49: 5791544886356423506
+      froggy baby_50: -2235697944863507910
+      froggy baby_51: 7339942851639395321
+      froggy baby_52: -4438498275568918854
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

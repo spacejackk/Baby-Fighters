@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class SpriteManager : MonoBehaviour
 {
+	//attributes
+	public int character;
 	public List<GameObject> hurtboxes;
 	public List<Sprite> sprites;
 	private Vector3 offset;
@@ -20,8 +22,11 @@ public class SpriteManager : MonoBehaviour
         
     }
 	
+	//updates sprite
 	public void updateSprite(string type){
+		//finds sprite in list
 		sprite.sprite = sprites.Find(item => item.name == type.Remove(type.Length - 1));
+		//determines sprite offset depending on which sprite it is
 		if (type.Contains("Character")){
 			transform.localPosition = Vector3.zero;
 		}
@@ -34,11 +39,18 @@ public class SpriteManager : MonoBehaviour
 		else if (type.Contains("Down")){
 			transform.localPosition = new Vector3(offset.x, -2.5f, offset.z);
 		}
+		else if (type.Contains("Special1")){
+			transform.localPosition = new Vector3(offset.x, offset.y, offset.z);
+		}
+		else if (type.Contains("Special3")){
+			transform.localPosition = new Vector3(0.9f / offset.x, offset.y, offset.z);
+		}
 		else{
 			transform.localPosition = offset;
 		}
 	}
 	
+	//flips sprite and hurtboxes
 	public void flipSprite(float moveInput){
 		//right
 		if (moveInput > 0){

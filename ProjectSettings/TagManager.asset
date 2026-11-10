@@ -10,12 +10,18 @@ TagManager:
   - Jab2
   - Kick1
   - Kick2
-  - Special1
-  - Special2
   - Punch1
   - Punch2
   - JumpJab1
   - JumpJab2
+  - Special1
+  - Special2
+  - XSpecial1
+  - XSpecial2
+  - Character1
+  - Character2
+  - Character3
+  - Character4
   layers:
   - Default
   - TransparentFX

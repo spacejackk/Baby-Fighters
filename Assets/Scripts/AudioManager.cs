@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+	//attributes
     public AudioSource menuMusic;
     public AudioSource battleMusic;
     public GameManager gameManager;
@@ -15,10 +16,16 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.gameActive == true)
-        {
+		//switches music
+		//in battle
+        if (gameManager.gameActive == true){
             battleMusic.mute = false;
             menuMusic.mute = true;
         }
+		//out of battle
+		else{
+			battleMusic.mute = true;
+            menuMusic.mute = false;
+		}
     }
 }

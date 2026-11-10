@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class GameManager : MonoBehaviour
 	public List<GameObject> characters;
 	public GameObject titleScreen;
 	public GameObject charSelect;
+	public GameObject optionsScreen;
+	public GameObject controlsScreen;
 	public GameObject start;
 	public GameObject gameUI;
-	public PlayerController p1;
+    public PlayerController p1;
 	public PlayerController p2;
 	public DragSelect p1Select;
 	public DragSelect p2Select;
